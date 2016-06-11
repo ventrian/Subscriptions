@@ -1,0 +1,98 @@
+﻿CREATE TABLE [dbo].[Ventrian_Subscriptions_Plan](
+	[PlanID] [int] IDENTITY(1,1) NOT NULL,
+	[ModuleID] [int] NOT NULL,
+	[Name] [nvarchar](255) NOT NULL,
+	[Deleted] [bit] NOT NULL,
+	[ViewOrder] [int] NOT NULL,
+	[AutoRecurring] [bit] NOT NULL,
+	[ServiceFee] [money] NOT NULL,
+	[BillingFrequency] [int] NOT NULL,
+	[BillingPeriod] [int] NOT NULL,
+	CONSTRAINT [PK_Ventrian_Subscriptions_Plan] PRIMARY KEY CLUSTERED ([PlanID] ASC)
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Ventrian_Subscriptions_Plan] ADD  CONSTRAINT [DF_Ventrian_Subscriptions_Plan_Deleted]  DEFAULT ((0)) FOR [Deleted]
+GO
+
+ALTER TABLE [dbo].[Ventrian_Subscriptions_Plan] ADD  CONSTRAINT [DF_Ventrian_Subscriptions_Plan_AutoRecurring]  DEFAULT ((0)) FOR [AutoRecurring]
+GO
+
+CREATE PROCEDURE [dbo].[Ventrian_Subscriptions_AddPlan] 
+	@ModuleID			int,
+	@Name				nvarchar(255),
+	@ServiceFee			money,
+	@AutoRecurring		bit,
+	@BillingFrequency	int,
+	@BillingPeriod		int
+AS
+
+DECLARE @ViewOrder int
+IF( (SELECT COUNT(*) FROM Ventrian_Subscriptions_Plan WHERE ModuleID = @ModuleID) > 0 )
+BEGIN
+	SELECT @ViewOrder = (MAX(ViewOrder)+1) FROM Ventrian_Subscriptions_Plan WHERE ModuleID = @ModuleID
+END
+ELSE
+BEGIN
+	SET @ViewOrder = 0
+END
+	
+INSERT INTO 
+	Ventrian_Subscriptions_Plan(ModuleID, Name, ServiceFee, AutoRecurring, BillingFrequency, BillingPeriod, ViewOrder)
+VALUES
+	(@ModuleID, @Name, @ServiceFee, @AutoRecurring, @BillingFrequency, @BillingPeriod, @ViewOrder)
+
+SELECT SCOPE_IDENTITY()
+GO
+
+CREATE PROCEDURE [dbo].[Ventrian_Subscriptions_UpdatePlan] 
+	@PlanID				int, 
+	@ModuleID			int,
+	@Name				nvarchar(255),
+	@ServiceFee			money,
+	@AutoRecurring		bit,
+	@BillingFrequency	int,
+	@BillingPeriod		int,
+	@ViewOrder			int 
+AS
+	
+UPDATE
+	Ventrian_Subscriptions_Plan
+SET 
+	ModuleID = @ModuleID, 
+	Name = @Name, 
+	ServiceFee = @ServiceFee, 
+	AutoRecurring = @AutoRecurring, 
+	BillingFrequency = @BillingFrequency, 
+	BillingPeriod = @BillingPeriod, 
+	ViewOrder = @ViewOrder
+WHERE
+	PlanID = @PlanID
+GO
+
+CREATE PROCEDURE [dbo].[Ventrian_Subscriptions_DeletePlan] 
+	@PlanID				int
+AS
+	
+UPDATE
+	Ventrian_Subscriptions_Plan
+SET 
+	Deleted = 1
+WHERE
+	PlanID = @PlanID
+GO
+
+CREATE PROCEDURE [dbo].[Ventrian_Subscriptions_GetPlans] 
+	@ModuleID	int
+AS
+	
+SELECT 
+	*
+FROM
+	Ventrian_Subscriptions_Plan
+WHERE
+	ModuleID = @ModuleID AND 
+		Deleted = 0 
+ORDER BY
+	ViewOrder
+GO

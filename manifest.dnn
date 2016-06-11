@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dotnetnuke type="Package" version="6.0">
+  <packages>
+    <package name="Ventrian.Modules.Subscriptions" type="Module" version="0.0.1">
+      <friendlyName>Subscriptions</friendlyName>
+      <description>Subscriptions Module offering Coupons/Plans for payment.</description>
+      <owner>
+        <name>Scott McCulloch</name>
+        <organization>Ventrian</organization>
+        <url>http://www.ventrian.com/modules/subscriptions</url>
+        <email><![CDATA[<a href="mailto:support@ventrian.com">support@ventrian.com</a>]]></email>
+      </owner>
+      <license src="License.lic" />
+      <releaseNotes src="ReleaseNotes.txt" />
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>Subscriptions</moduleName>
+            <foldername>Ventrian/Subscriptions</foldername>
+            <businessControllerClass />
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>Subscriptions</friendlyName>
+                <defaultCacheTime>-1</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/Ventrian/Subscriptions/View.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Subscriptions</controlTitle>
+                    <controlType>View</controlType>
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>EditCoupon</controlKey>
+                    <controlSrc>DesktopModules/Ventrian/Subscriptions/EditCoupon.ascx</controlSrc>
+                    <supportsPartialRendering>True</supportsPartialRendering>
+                    <supportsPopUps>True</supportsPopUps>
+                    <controlTitle>Edit Coupon</controlTitle>
+                    <controlType>Edit</controlType>
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>EditCoupons</controlKey>
+                    <controlSrc>DesktopModules/Ventrian/Subscriptions/EditCoupons.ascx</controlSrc>
+                    <supportsPartialRendering>True</supportsPartialRendering>
+                    <supportsPopUps>True</supportsPopUps>
+                    <controlTitle>Edit Coupons</controlTitle>
+                    <controlType>Edit</controlType>
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>EditPlans</controlKey>
+                    <controlSrc>DesktopModules/Ventrian/Subscriptions/EditPlans.ascx</controlSrc>
+                    <supportsPartialRendering>True</supportsPartialRendering>
+                    <supportsPopUps>True</supportsPopUps>
+                    <controlTitle>Edit Plans</controlTitle>
+                    <controlType>Edit</controlType>
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>EditPlan</controlKey>
+                    <controlSrc>DesktopModules/Ventrian/Subscriptions/EditPlan.ascx</controlSrc>
+                    <supportsPartialRendering>True</supportsPartialRendering>
+                    <supportsPopUps>True</supportsPopUps>
+                    <controlTitle>Edit Plan</controlTitle>
+                    <controlType>Edit</controlType>
+                    <helpUrl />
+                  </moduleControl>
+                </moduleControls>
+                <permissions>
+                </permissions>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <path>bin</path>
+              <name>Ventrian.Modules.Subscriptions.dll</name>
+            </assembly>
+          </assemblies>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/Ventrian/Subscriptions</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
