@@ -1,10 +1,11 @@
 ﻿using DotNetNuke.Services.Exceptions;
 using System;
 using Ventrian.Modules.Subscriptions.Base;
+using Ventrian.Modules.Subscriptions.Components.Entities;
 
 namespace Ventrian.Modules.Subscriptions
 {
-    public partial class EditPlans : SubscriptionBase
+    public partial class EditPlans : SubscriptionBase<SubscriptionSettings>
     {
         #region Private Methods
 
@@ -19,6 +20,15 @@ namespace Ventrian.Modules.Subscriptions
                 grdPlans.Visible = false;
                 phNoPlans.Visible = true;
             }
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected string GetEditUrl(int planID)
+        {
+            return EditUrl("pid", planID.ToString(), "EditPlan");
         }
 
         #endregion

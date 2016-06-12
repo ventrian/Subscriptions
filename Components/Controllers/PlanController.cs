@@ -22,7 +22,8 @@ namespace Ventrian.Modules.Subscriptions.Components.Controllers
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<Plan>();
-                rep.Delete(objPlan);
+                objPlan.Deleted = true;
+                rep.Update(objPlan);
             }
         }
 

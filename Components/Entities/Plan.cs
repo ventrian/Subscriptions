@@ -1,4 +1,5 @@
-﻿using DotNetNuke.ComponentModel.DataAnnotations;
+﻿using DotNetNuke.Common.Utilities;
+using DotNetNuke.ComponentModel.DataAnnotations;
 using Ventrian.Modules.Subscriptions.Components.Types;
 
 namespace Ventrian.Modules.Subscriptions.Components.Entities
@@ -7,16 +8,29 @@ namespace Ventrian.Modules.Subscriptions.Components.Entities
     [PrimaryKey("PlanID", AutoIncrement = true)]
     public class Plan
     {
-        public int PlanID { get; set; }
-        public int ModuleId { get; set; }
-        public string Name { get; set; }
-        public bool Deleted { get; set; }
-        public int ViewOrder { get; set; }
+        public int PlanID { get; set; } = Null.NullInteger;
+        public int ModuleID { get; set; } = Null.NullInteger;
+        public int RoleID { get; set; } = Null.NullInteger;
 
-        public decimal ServiceFee { get; set; }
+        public string Name { get; set; } = "";
+        public int ViewOrder { get; set; } = 0;
 
-        public bool AutoRecurring { get; set; }
-        public FrequencyType BillingFrequency { get; set; }
-        public int BillingPeriod { get; set; }
+        public bool Deleted { get; set; } = false;
+
+        public decimal ServiceFee { get; set; } = 0;
+        public bool AutoRecurring { get; set; } = false;
+        public FrequencyType BillingFrequency { get; set; } = FrequencyType.OneTimeFee;
+        public int BillingPeriod { get; set; } = Null.NullInteger;
+
+        // Helpers
+        [IgnoreColumn]
+        public string BillingPeriodDescription
+        {
+            get
+            {
+                if (BillingPeriod == Null.NullInteger) return "N/A";
+                return BillingPeriod.ToString();
+            }
+        }
     }
 }

@@ -71,6 +71,14 @@
                     <controlType>Edit</controlType>
                     <helpUrl />
                   </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>DesktopModules/Ventrian/Subscriptions/Settings.ascx</controlSrc>
+                    <supportsPartialRendering>True</supportsPartialRendering>
+                    <controlTitle>Subscription Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <helpUrl />
+                  </moduleControl>
                 </moduleControls>
                 <permissions>
                 </permissions>

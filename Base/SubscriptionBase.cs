@@ -1,37 +1,23 @@
 ﻿using DotNetNuke.Entities.Modules;
-using DotNetNuke.Framework;
-using DotNetNuke.Security.Permissions;
+using DotNetNuke.Entities.Modules.Settings;
 using System.Collections.Generic;
 using Ventrian.Modules.Subscriptions.Components.Controllers;
 using Ventrian.Modules.Subscriptions.Components.Entities;
 
 namespace Ventrian.Modules.Subscriptions.Base
 {
-    public class SubscriptionBase : PortalModuleBase
+    public class SubscriptionBase<TModuleSettings> : PortalModuleBase
+            where TModuleSettings : class, new()
     {
-        #region Private Members
+        #region Settings Overrides 
 
-        private SubscriptionSetting _subscriptionSetting;
+        protected class SubscriptionSettingsRepository : SettingsRepository<TModuleSettings> { }
+        private SubscriptionSettingsRepository SettingsRepository { get; } = new SubscriptionSettingsRepository();
+        public new TModuleSettings Settings => SettingsRepository.GetSettings(ModuleConfiguration);
 
         #endregion
 
         #region Protected Properties
-
-        protected bool CanEditModule
-        {
-            get
-            {
-                if (UserInfo.IsSuperUser)
-                    return true;
-
-                return ModulePermissionController.CanEditModuleContent(ModuleConfiguration);
-            }
-        }
-
-        protected CDefault PageBase
-        {
-            get { return (CDefault)Page; }
-        }
 
         protected IEnumerable<Plan> Plans
         {
@@ -42,11 +28,8 @@ namespace Ventrian.Modules.Subscriptions.Base
             }
         }
 
-        protected SubscriptionSetting SubscriptionSettings
-        {
-            get { return _subscriptionSetting ?? (_subscriptionSetting = new SubscriptionSetting(Settings)); }
-        }
-
         #endregion
     }
+
+
 }

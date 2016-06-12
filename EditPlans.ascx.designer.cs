@@ -22,15 +22,6 @@ namespace Ventrian.Modules.Subscriptions {
         protected global::System.Web.UI.WebControls.DataGrid grdPlans;
         
         /// <summary>
-        /// lnkAddEntry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkAddEntry;
-        
-        /// <summary>
         /// phNoPlans control.
         /// </summary>
         /// <remarks>
@@ -38,5 +29,14 @@ namespace Ventrian.Modules.Subscriptions {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder phNoPlans;
+        
+        /// <summary>
+        /// lnkAddEntry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkAddEntry;
     }
 }

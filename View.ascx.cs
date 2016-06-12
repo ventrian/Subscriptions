@@ -1,13 +1,13 @@
 ﻿using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Security;
-using DotNetNuke.Services.Localization;
 using System;
 using Ventrian.Modules.Subscriptions.Base;
+using Ventrian.Modules.Subscriptions.Components.Entities;
 
 namespace Ventrian.Modules.Subscriptions
 {
-    public partial class View : SubscriptionBase, IActionable
+    public partial class View : SubscriptionBase<SubscriptionSettings>, IActionable
     {
         protected void Page_Load(object sender, EventArgs e)
         {
