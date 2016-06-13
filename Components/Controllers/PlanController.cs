@@ -1,5 +1,6 @@
 ﻿using DotNetNuke.Data;
 using System.Collections.Generic;
+using System.Linq;
 using Ventrian.Modules.Subscriptions.Components.Entities;
 
 namespace Ventrian.Modules.Subscriptions.Components.Controllers
@@ -22,19 +23,19 @@ namespace Ventrian.Modules.Subscriptions.Components.Controllers
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<Plan>();
-                objPlan.Deleted = true;
+                objPlan.IsDeleted = true;
                 rep.Update(objPlan);
             }
         }
 
-        public Plan GetPlan(int planID)
+        public Plan GetPlan(int planID, int moduleID)
         {
             Plan plan;
 
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<Plan>();
-                plan = rep.GetById(planID);
+                plan = rep.GetById(planID, moduleID);
             }
 
             return plan;
@@ -47,10 +48,10 @@ namespace Ventrian.Modules.Subscriptions.Components.Controllers
             using(IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<Plan>();
-                plans = rep.Get();
+                plans = rep.Get(moduleID);
             }
 
-            return plans;
+            return plans.Where(p => !p.IsDeleted);
         }
 
         public void UpdatePlan(Plan objPlan)

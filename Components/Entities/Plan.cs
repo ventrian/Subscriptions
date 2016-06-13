@@ -1,11 +1,14 @@
 ﻿using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
+using System.Web.Caching;
 using Ventrian.Modules.Subscriptions.Components.Types;
 
 namespace Ventrian.Modules.Subscriptions.Components.Entities
 {
     [TableName("Ventrian_Subscriptions_Plan")]
     [PrimaryKey("PlanID", AutoIncrement = true)]
+    [Scope("ModuleID")]
+    [Cacheable("Plans", CacheItemPriority.Default, 20)]
     public class Plan
     {
         public int PlanID { get; set; } = Null.NullInteger;
@@ -15,7 +18,8 @@ namespace Ventrian.Modules.Subscriptions.Components.Entities
         public string Name { get; set; } = "";
         public int ViewOrder { get; set; } = 0;
 
-        public bool Deleted { get; set; } = false;
+        public bool IsActive { get; set; } = true;
+        public bool IsDeleted { get; set; } = false;
 
         public decimal ServiceFee { get; set; } = 0;
         public bool AutoRecurring { get; set; } = false;
@@ -24,12 +28,23 @@ namespace Ventrian.Modules.Subscriptions.Components.Entities
 
         // Helpers
         [IgnoreColumn]
-        public string BillingPeriodDescription
+        public string BillingDescription
         {
             get
             {
-                if (BillingPeriod == Null.NullInteger) return "N/A";
-                return BillingPeriod.ToString();
+                var description = "";
+                switch (BillingFrequency)
+                {
+                    case FrequencyType.OneTimeFee:
+                        description = ServiceFee.ToString("C") + " as a one time fee";
+                        break;
+                    default:
+                        description = ServiceFee.ToString("C") + " is billed every " + BillingPeriod + " " + BillingFrequency.ToString() + "(s)";
+                        if (AutoRecurring)
+                            description += " (Auto-Renews)";
+                        break; 
+                }
+                return description;
             }
         }
     }

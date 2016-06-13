@@ -31,6 +31,15 @@ namespace Ventrian.Modules.Subscriptions {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
+        /// valName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valName;
+        
+        /// <summary>
         /// plRole control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Ventrian.Modules.Subscriptions {
         protected global::System.Web.UI.WebControls.DropDownList lstRoles;
         
         /// <summary>
+        /// valRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valRoles;
+        
+        /// <summary>
         /// plServiceFee control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace Ventrian.Modules.Subscriptions {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtServiceFee;
+        
+        /// <summary>
+        /// valServiceFee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valServiceFee;
         
         /// <summary>
         /// plBillingFrequency control.
@@ -112,6 +139,15 @@ namespace Ventrian.Modules.Subscriptions {
         protected global::System.Web.UI.WebControls.DropDownList lstBillingPeriod;
         
         /// <summary>
+        /// valBillingPeriod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valBillingPeriod;
+        
+        /// <summary>
         /// divAutoRecurring control.
         /// </summary>
         /// <remarks>
@@ -137,6 +173,24 @@ namespace Ventrian.Modules.Subscriptions {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAutoRecurring;
+        
+        /// <summary>
+        /// plIsActive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl plIsActive;
+        
+        /// <summary>
+        /// chkIsActive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkIsActive;
         
         /// <summary>
         /// cmdSave control.

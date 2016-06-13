@@ -19,6 +19,15 @@ namespace Ventrian.Modules.Subscriptions.Base
 
         #region Protected Properties
 
+        protected IEnumerable<Coupon> Coupons
+        {
+            get
+            {
+                var objCouponController = new CouponController();
+                return objCouponController.GetCoupons(ModuleId);
+            }
+        }
+
         protected IEnumerable<Plan> Plans
         {
             get

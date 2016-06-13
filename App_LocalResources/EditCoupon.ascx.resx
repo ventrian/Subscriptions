@@ -117,70 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="OneTimeFee.Text" xml:space="preserve">
-    <value>One Time Fee</value>
+  <data name="plCode.Help" xml:space="preserve">
+    <value>Specify a code for the coupon.</value>
   </data>
-  <data name="plAutoRecurring.Help" xml:space="preserve">
-    <value>Specify to auto-bill the customer on plan renewals.</value>
-  </data>
-  <data name="plAutoRecurring.Text" xml:space="preserve">
-    <value>Auto Recurring</value>
-  </data>
-  <data name="plBillingFrequency.Help" xml:space="preserve">
-    <value>Specify a billing frequency for your plan.</value>
-  </data>
-  <data name="plBillingFrequency.Text" xml:space="preserve">
-    <value>Billing Frequency</value>
-  </data>
-  <data name="plBillingPeriod.Help" xml:space="preserve">
-    <value>Specify the period of the billing frequency.</value>
-  </data>
-  <data name="plBillingPeriod.Text" xml:space="preserve">
-    <value>Billing Period</value>
-  </data>
-  <data name="plName.Help" xml:space="preserve">
-    <value>Specify a name for the plan.</value>
-  </data>
-  <data name="plName.Text" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="plRole.Help" xml:space="preserve">
-    <value>Specify a role for the plan to belong to.</value>
-  </data>
-  <data name="plRole.Text" xml:space="preserve">
-    <value>Role</value>
-  </data>
-  <data name="plServiceFee.Help" xml:space="preserve">
-    <value>Specify the Service Fee in the format of 1.00, 10.00</value>
-  </data>
-  <data name="plServiceFee.Text" xml:space="preserve">
-    <value>Service Fee</value>
-  </data>
-  <data name="SelectPeriod.Text" xml:space="preserve">
-    <value>-- Select Period --</value>
-  </data>
-  <data name="SelectRole.Text" xml:space="preserve">
-    <value>-- Select Role --</value>
-  </data>
-  <data name="lstBillingPeriod.ErrorMessage" xml:space="preserve">
-    <value>Billing Period is Required</value>
-  </data>
-  <data name="lstRoles.ErrorMessage" xml:space="preserve">
-    <value>Role is Required</value>
-  </data>
-  <data name="PlanDetails.Text" xml:space="preserve">
-    <value>Plan Details</value>
+  <data name="plCode.Text" xml:space="preserve">
+    <value>Code</value>
   </data>
   <data name="plIsActive.Help" xml:space="preserve">
-    <value>Specify whether or not the plan is available for end users.</value>
+    <value>Specify whether or not the coupon is available for end users.</value>
   </data>
   <data name="plIsActive.Text" xml:space="preserve">
     <value>Is Active?</value>
   </data>
-  <data name="txtServiceFee.ErrorMessage" xml:space="preserve">
-    <value>Service Fee is Required</value>
+  <data name="valCode.ErrorMessage" xml:space="preserve">
+    <value>Code is Required</value>
   </data>
-  <data name="valName.ErrorMessage" xml:space="preserve">
-    <value>Name is Required</value>
+  <data name="FixedAmount.Text" xml:space="preserve">
+    <value>Fixed Amount</value>
+  </data>
+  <data name="Percentage.Text" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="plAmount.Help" xml:space="preserve">
+    <value>Specify an amount to discount (percentage or fixed amount).</value>
+  </data>
+  <data name="plAmount.Text" xml:space="preserve">
+    <value>Amount to Discount</value>
+  </data>
+  <data name="plDiscountType.Help" xml:space="preserve">
+    <value>Specify to discount as a percentage or fixed amount.</value>
+  </data>
+  <data name="plDiscountType.Text" xml:space="preserve">
+    <value>Discount Type</value>
+  </data>
+  <data name="plEndDate.Help" xml:space="preserve">
+    <value>Optionally offer the coupon ending on this date.</value>
+  </data>
+  <data name="plEndDate.Text" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="plQuantity.Help" xml:space="preserve">
+    <value>Specify a quantity of coupons available, leave blank for unlimited.</value>
+  </data>
+  <data name="plQuantity.Text" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="plStartDate.Help" xml:space="preserve">
+    <value>Optionally offer the coupon starting on this date.</value>
+  </data>
+  <data name="plStartDate.Text" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="txtAmount.ErrorMessage" xml:space="preserve">
+    <value>Amount is Required</value>
   </data>
 </root>

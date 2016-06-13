@@ -117,70 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="OneTimeFee.Text" xml:space="preserve">
-    <value>One Time Fee</value>
+  <data name="AddCoupon.Text" xml:space="preserve">
+    <value>Add Coupon</value>
   </data>
-  <data name="plAutoRecurring.Help" xml:space="preserve">
-    <value>Specify to auto-bill the customer on plan renewals.</value>
-  </data>
-  <data name="plAutoRecurring.Text" xml:space="preserve">
-    <value>Auto Recurring</value>
-  </data>
-  <data name="plBillingFrequency.Help" xml:space="preserve">
-    <value>Specify a billing frequency for your plan.</value>
-  </data>
-  <data name="plBillingFrequency.Text" xml:space="preserve">
-    <value>Billing Frequency</value>
-  </data>
-  <data name="plBillingPeriod.Help" xml:space="preserve">
-    <value>Specify the period of the billing frequency.</value>
-  </data>
-  <data name="plBillingPeriod.Text" xml:space="preserve">
-    <value>Billing Period</value>
-  </data>
-  <data name="plName.Help" xml:space="preserve">
-    <value>Specify a name for the plan.</value>
-  </data>
-  <data name="plName.Text" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="plRole.Help" xml:space="preserve">
-    <value>Specify a role for the plan to belong to.</value>
-  </data>
-  <data name="plRole.Text" xml:space="preserve">
-    <value>Role</value>
-  </data>
-  <data name="plServiceFee.Help" xml:space="preserve">
-    <value>Specify the Service Fee in the format of 1.00, 10.00</value>
-  </data>
-  <data name="plServiceFee.Text" xml:space="preserve">
-    <value>Service Fee</value>
-  </data>
-  <data name="SelectPeriod.Text" xml:space="preserve">
-    <value>-- Select Period --</value>
-  </data>
-  <data name="SelectRole.Text" xml:space="preserve">
-    <value>-- Select Role --</value>
-  </data>
-  <data name="lstBillingPeriod.ErrorMessage" xml:space="preserve">
-    <value>Billing Period is Required</value>
-  </data>
-  <data name="lstRoles.ErrorMessage" xml:space="preserve">
-    <value>Role is Required</value>
-  </data>
-  <data name="PlanDetails.Text" xml:space="preserve">
-    <value>Plan Details</value>
-  </data>
-  <data name="plIsActive.Help" xml:space="preserve">
-    <value>Specify whether or not the plan is available for end users.</value>
-  </data>
-  <data name="plIsActive.Text" xml:space="preserve">
-    <value>Is Active?</value>
-  </data>
-  <data name="txtServiceFee.ErrorMessage" xml:space="preserve">
-    <value>Service Fee is Required</value>
-  </data>
-  <data name="valName.ErrorMessage" xml:space="preserve">
-    <value>Name is Required</value>
+  <data name="NoCoupons.Text" xml:space="preserve">
+    <value>There are currently no coupons.</value>
   </data>
 </root>

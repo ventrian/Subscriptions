@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EditPlans.ascx.cs" Inherits="Ventrian.Modules.Subscriptions.EditPlans" %>
-
 <div class="dnnForm dnnClear">
     <asp:DataGrid ID="grdPlans" Width="98%" AutoGenerateColumns="false" EnableViewState="false" runat="server"
         BorderStyle="None" GridLines="None" CssClass="dnnGrid table">
@@ -18,9 +17,8 @@
             </asp:TemplateColumn>
             <asp:BoundColumn DataField="Name" HeaderText="Name" />
             <asp:BoundColumn DataField="ServiceFee" HeaderText="ServiceFee" DataFormatString="{0:C}" />
-            <asp:BoundColumn DataField="AutoRecurring" HeaderText="AutoRecurring" />
-            <asp:BoundColumn DataField="BillingFrequency" HeaderText="BillingFrequency" />
-            <asp:BoundColumn DataField="BillingPeriod" HeaderText="BillingPeriod" />
+            <asp:BoundColumn DataField="BillingDescription" HeaderText="BillingDescription" />
+            <asp:BoundColumn DataField="IsActive" HeaderText="IsActive" />
         </Columns>
     </asp:DataGrid>    
 </div>

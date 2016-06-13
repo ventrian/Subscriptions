@@ -64,7 +64,7 @@ namespace Ventrian.Modules.Subscriptions
             if (PlanID != Null.NullInteger)
             {
                 var objPlanController = new PlanController();
-                var objPlan = objPlanController.GetPlan(PlanID);
+                var objPlan = objPlanController.GetPlan(PlanID, ModuleId);
 
                 if (objPlan == null)
                 {
@@ -74,13 +74,14 @@ namespace Ventrian.Modules.Subscriptions
                 {
                     txtName.Text = objPlan.Name;
                     if (lstRoles.Items.FindByValue(objPlan.RoleID.ToString()) != null)
-                        lstRoles.SelectedValue = objPlan.PlanID.ToString();
+                        lstRoles.SelectedValue = objPlan.RoleID.ToString();
                     txtServiceFee.Text = objPlan.ServiceFee.ToString();
                     if (lstBillingFrequency.Items.FindByValue(objPlan.BillingFrequency.ToString()) != null)
                         lstBillingFrequency.SelectedValue = objPlan.BillingFrequency.ToString();
                     if (lstBillingPeriod.Items.FindByValue(objPlan.BillingPeriod.ToString()) != null)
                         lstBillingPeriod.SelectedValue = objPlan.BillingPeriod.ToString();
                     chkAutoRecurring.Checked = objPlan.AutoRecurring;
+                    chkIsActive.Checked = objPlan.IsActive;
 
                     AdjustControlVisibility();
 
@@ -100,7 +101,7 @@ namespace Ventrian.Modules.Subscriptions
 
             lstRoles.DataSource = objRoleController.GetRoles(PortalId);
             lstRoles.DataBind();
-            lstRoles.Items.Insert(0, LocalizeString("SelectRole"));
+            lstRoles.Items.Insert(0, new ListItem(LocalizeString("SelectRole"), Null.NullInteger.ToString()));
         }
 
         #endregion
@@ -120,6 +121,7 @@ namespace Ventrian.Modules.Subscriptions
                     BindPlan();
 
                     lnkCancel.NavigateUrl = EditUrl("EditPlans");
+                    txtName.Focus();
                 }
             }
             catch (Exception ex)
@@ -150,16 +152,21 @@ namespace Ventrian.Modules.Subscriptions
                     {
                         // Update Plan
                         var objPlanController = new PlanController();
-                        var objPlan = objPlanController.GetPlan(PlanID);
+                        var objPlan = objPlanController.GetPlan(PlanID, ModuleId);
 
                         if( objPlan != null )
                         {
+                            objPlan.ModuleID = ModuleId;
                             objPlan.Name = txtName.Text;
                             objPlan.RoleID = Convert.ToInt32(lstRoles.SelectedValue);
-                            objPlan.ServiceFee = Convert.ToDecimal(txtServiceFee.Text);
+                            decimal serviceFee;
+                            if (!Decimal.TryParse(txtServiceFee.Text, out serviceFee))
+                                serviceFee = 0;
+                            objPlan.ServiceFee = serviceFee;
                             objPlan.BillingFrequency = (FrequencyType) Enum.Parse(typeof(FrequencyType), lstBillingFrequency.SelectedValue);
                             objPlan.BillingPeriod = Convert.ToInt32(lstBillingPeriod.SelectedValue);
                             objPlan.AutoRecurring = chkAutoRecurring.Checked;
+                            objPlan.IsActive = chkIsActive.Checked;
 
                             objPlanController.UpdatePlan(objPlan);
                         }
@@ -169,12 +176,17 @@ namespace Ventrian.Modules.Subscriptions
                         // Add Plan
                         var objPlan = new Plan();
 
+                        objPlan.ModuleID = ModuleId;
                         objPlan.Name = txtName.Text;
                         objPlan.RoleID = Convert.ToInt32(lstRoles.SelectedValue);
-                        objPlan.ServiceFee = Convert.ToDecimal(txtServiceFee.Text);
+                        decimal serviceFee;
+                        if (!Decimal.TryParse(txtServiceFee.Text, out serviceFee))
+                            serviceFee = 0;
+                        objPlan.ServiceFee = serviceFee;
                         objPlan.BillingFrequency = (FrequencyType)Enum.Parse(typeof(FrequencyType), lstBillingFrequency.SelectedValue);
                         objPlan.BillingPeriod = Convert.ToInt32(lstBillingPeriod.SelectedValue);
                         objPlan.AutoRecurring = chkAutoRecurring.Checked;
+                        objPlan.IsActive = chkIsActive.Checked;
 
                         var objPlanController = new PlanController();
                         objPlanController.AddPlan(objPlan);
@@ -198,7 +210,7 @@ namespace Ventrian.Modules.Subscriptions
                 {
                     // Update Plan
                     var objPlanController = new PlanController();
-                    var objPlan = objPlanController.GetPlan(PlanID);
+                    var objPlan = objPlanController.GetPlan(PlanID, ModuleId);
 
                     if (objPlan != null)
                         objPlanController.DeletePlan(objPlan);
